@@ -1,0 +1,113 @@
+---
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import Text from "./Text.astro";
+import { Button } from "../ui/button";
+import { BriefcaseBusiness, Download } from "lucide-react";
+import { Github } from "lucide-astro";
+import { Rust, Typescript } from "simple-icons-astro";
+import StackIcon, { type Props as StackIconProps } from "./StackIcon.astro";
+
+const projects = [
+  {
+    title: "Typescript cleanup definitions",
+    github: "",
+    description:
+      "A simple typescript plugin that filters out [Go to definition] results from any given declaration file",
+    stack: "ts",
+  },
+  {
+    title: "Typescript React classnames",
+    github: "",
+    description:
+      "Typescript transformer plugin for appending display name property to React Components.",
+    stack: "ts",
+  },
+  {
+    title: "React CSS modules",
+    github: "",
+    description:
+      "VS Code Extension for CSS modules in typescript based react projects",
+    stack: "ts",
+  },
+  {
+    title: "Markdoc Traverse",
+    github: "",
+    description: "A type safe tiny traversal library for MakDoc AST",
+    stack: "ts",
+  },
+  {
+    title: "Prisma Visualise",
+    github: "",
+    description: "Visualise your 'Prisma' schema in your command line",
+    stack: "rust",
+  },
+  {
+    title: "My own insights",
+    github: "",
+    description: "Analytics app for my website and blog",
+    stack: "nextjs",
+  },
+  {
+    title: "Browser Scan",
+    github: "",
+    description:
+      "Browser Scan lets you scan your CSS code against browsers for compatibility",
+    stack: "ts",
+  },
+];
+---
+
+<section>
+  <h2
+    class="my-4 py-1.5 flex text-accent-foreground/80 border-b text-2xl font-bold"
+  >
+    Projects
+  </h2>
+  <div class="grid grid-cols-6 gap-4">
+    {
+      projects.map((project) => (
+        <Card className="self-start tile">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-lg text-primary flex items-center gap-2">
+              {project.title}
+              <StackIcon stack={project.stack as StackIconProps["stack"]} />
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="pb-4">
+            <p class="font-light">{project.description}</p>
+          </CardContent>
+          <CardFooter className="">
+            <a href={project.github}>
+              <Github size="18px" class="stroke-muted-foreground" />
+            </a>
+          </CardFooter>
+        </Card>
+      ))
+    }
+  </div>
+  <Button variant={"link"} className="flex ml-auto">View More</Button>
+</section>
+
+<style>
+  .tile.tile:nth-child(1),
+  .tile:nth-child(2) {
+    grid-column: span 3;
+  }
+  .tile.tile:nth-child(3),
+  .tile.tile:nth-child(4),
+  .tile.tile:nth-child(5),
+  .tile.tile:nth-child(6) {
+    grid-column: span 2;
+  }
+
+  .tile:nth-child(7) {
+    grid-column: span 4;
+  }
+</style>

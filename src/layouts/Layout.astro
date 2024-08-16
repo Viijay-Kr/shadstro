@@ -1,0 +1,76 @@
+---
+import { DisplayPicture } from "@/components/react/DisplayPicture";
+import { Navigation } from "@/components/react/Navigation";
+import { Github, X, Linkedin } from "simple-icons-astro";
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark bg-background">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="container my-12">
+    <header
+      class="flex py-4 border-b sticky bg-background z-10 top-0 bottom-0 items-center gap-4 w-full"
+    >
+      <DisplayPicture client:load />
+      <div class="flex flex-col gap-2">
+        <p class="text-xl text-foreground/90">
+          Hey there 👋. I'm Vijay. <br /> Software Engineer from Hamburg
+        </p>
+        <div class="flex items-center gap-4">
+          <a
+            href="https://www.linkedin.com/in/vijayakrishna-venkatesan-7a557291/"
+            target="_blank"
+          >
+            <Linkedin color="#6b88e1" size={"18px"} strokeWidth={"1px"} />
+          </a>
+          <a href="https://github.com/Viijay-Kr" target="_blank">
+            <Github size={"18px"} strokeWidth={"1px"} />
+          </a>
+          <a href="https://x.com/reactporiyalar" target="_blank">
+            <X size={"18px"} strokeWidth={"1px"} />
+          </a>
+        </div>
+      </div>
+      <Navigation />
+    </header>
+  </body>
+  <slot />
+</html>
+
+<style is:global>
+  html {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+</style>

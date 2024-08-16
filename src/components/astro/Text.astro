@@ -1,0 +1,10 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import classNames from "classnames";
+type Props = HTMLAttributes<"p">;
+const props: Props = Astro.props;
+---
+
+<p class={classNames("font-light my-4", props["class"])}>
+  <slot />
+</p>

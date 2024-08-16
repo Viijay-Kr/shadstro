@@ -1,0 +1,10 @@
+---
+const props = Astro.props;
+---
+
+<h2
+  {...props}
+  class="my-4 flex text-accent-foreground/70 border-b text-2xl font-bold"
+>
+  <slot />
+</h2>

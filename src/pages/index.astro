@@ -1,0 +1,29 @@
+---
+import "@/styles/globals.css";
+import Layout from "../layouts/Layout.astro";
+import Text from "../components/astro/Text.astro";
+import { Experience } from "@/components/react/Experience";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tools } from "@/components/react/Skills";
+import Projects from "@/components/astro/Projects.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="my-8">
+    <Text class={"text-xl"}>
+      I am a Fullstack Engineer with over 9 years of experience working with
+      Node JS, Typescript,React MongoDB.
+    </Text>
+    <Text class={"text-xl"}>
+      I like to parse AST's, work on VS code extensions and build web apps to
+      boost developer experience. I also like to write stuff about developer
+      experience and what not.
+    </Text>
+
+    <div class="grid grid-cols-2 gap-4">
+      <Experience />
+      <Tools />
+    </div>
+    <Projects />
+  </main>
+</Layout>

@@ -1,0 +1,27 @@
+---
+import { Nextdotjs, Rust, Typescript } from "simple-icons-astro";
+
+export interface Props {
+  stack: "ts" | "rust" | "nextjs";
+}
+
+const props = Astro.props;
+---
+
+<>
+  {
+    props.stack === "ts" && (
+      <Typescript size="18px" class="fill-typescript-icon" />
+    )
+  }
+  {
+    props.stack === "rust" && (
+      <Rust size="18px" class="dark:fill-white fill-black" />
+    )
+  }
+  {
+    props.stack === "nextjs" && (
+      <Nextdotjs size="18px" class="dark:fill-white fill-black" />
+    )
+  }
+</>
