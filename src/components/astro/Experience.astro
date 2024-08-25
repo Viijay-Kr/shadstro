@@ -76,21 +76,12 @@ const jobs = [
         href="https://1drv.ms/b/c/5e725c9cb726aadb/IQOLbKtZetHTQJJWT3WQB5WqAbf_1RRFyY2Lb_BpOFknV5Y"
         target="_blank"
         class=""
+        id="cv"
       >
         <Button
           className="font-bold w-full flex items-center gap-1 text-xs"
           title="Download CV"
           size={"sm"}
-          onClick={() => {
-            window.Insights.track({
-              type: "click",
-              meta: {
-                title: "CV",
-                source: "Experience",
-                value: "",
-              },
-            });
-          }}
         >
           <Download size={"16px"} className="" />
           CV
@@ -100,3 +91,18 @@ const jobs = [
   </CardContent>
   <CardFooter className="p-2 justify-end" />
 </Card>
+
+<script>
+  const cv = document.getElementById("cv");
+  cv?.addEventListener("click", () => {
+    window.Insights.track({
+      type: "click",
+      meta: {
+        title: "CV",
+        source: "Experience",
+        value:
+          "https://1drv.ms/b/c/5e725c9cb726aadb/IQOLbKtZetHTQJJWT3WQB5WqAbf_1RRFyY2Lb_BpOFknV5Y",
+      },
+    });
+  });
+</script>

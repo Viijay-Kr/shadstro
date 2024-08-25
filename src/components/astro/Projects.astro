@@ -79,6 +79,7 @@ const projects: Array<{
       projects.map((project, index) => (
         <a
           class={classNames(
+            "project-links",
             "self-start col-span-2 animate-duration-700 cursor-pointer",
             index % 2 === 0 ? "animate-fade-up" : "animate-fade-down",
             (index === 0 || index === 1 || index === 2 || index === 3) &&
@@ -132,3 +133,21 @@ const projects: Array<{
     grid-column: span 3;
   }
 </style>
+
+<script>
+  const links = document.querySelectorAll(".project-links");
+  links.forEach((el) => {
+    const title = el.getAttribute("title") ?? "";
+    const href = el.getAttribute("href") ?? "";
+    el.addEventListener("click", () => {
+      window.Insights.track({
+        type: "click",
+        meta: {
+          title,
+          value: href,
+          source: "projects",
+        },
+      });
+    });
+  });
+</script>

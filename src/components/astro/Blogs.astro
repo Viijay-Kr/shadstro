@@ -36,23 +36,13 @@ const blogs = [
       blogs.map((blog) => (
         <a
           class={classNames(
+            "post-links",
             "animate-fade-up animate-duration-700 cursor-pointer"
           )}
           href={blog.link}
           target="_blank"
         >
-          <Card
-            onClick={() => {
-              window.Insights.track({
-                type: "click",
-                meta: {
-                  title: blog.title,
-                  source: "posts",
-                  value: blog.link,
-                },
-              });
-            }}
-          >
+          <Card>
             <div>
               <CardHeader className="pb-0">
                 <CardTitle className="text-lg text-primary flex items-center gap-2">
@@ -73,20 +63,38 @@ const blogs = [
       ))
     }
   </div>
-  <a href="https://blogs.vijayakrishna.dev" target="_blank">
-    <Button
-      onClick={() => {
-        window.Insights.track({
-          type: "click",
-          meta: {
-            title: "View more",
-            source: "posts",
-            value: "https://blogs.vijayakrishna.dev",
-          },
-        });
-      }}
-      variant={"link"}
-      className="flex ml-auto my-2 text-muted-foreground">View More</Button
+  <a href="https://blogs.vijayakrishna.dev" id="view-more" target="_blank">
+    <Button variant={"link"} className="flex ml-auto my-2 text-muted-foreground"
+      >View More</Button
     >
   </a>
 </section>
+
+<script>
+  const links = document.querySelectorAll(".post-links");
+  links.forEach((el) => {
+    const title = el.getAttribute("title") ?? "";
+    const href = el.getAttribute("href") ?? "";
+    el.addEventListener("click", () => {
+      window.Insights.track({
+        type: "click",
+        meta: {
+          title,
+          value: href,
+          source: "posts",
+        },
+      });
+    });
+  });
+  const viewMore = document.getElementById("view-more");
+  viewMore?.addEventListener("click", () => {
+    window.Insights.track({
+      type: "click",
+      meta: {
+        title: "View more",
+        source: "posts",
+        value: "https://blogs.vijayakrishna.dev",
+      },
+    });
+  });
+</script>
