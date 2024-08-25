@@ -1,7 +1,10 @@
 ---
 import { DisplayPicture } from "@/components/react/DisplayPicture";
-import { Navigation } from "@/components/react/Navigation";
+import Navigation from "@/components/astro/Navigation.astro";
 import { Github, X, Linkedin } from "simple-icons-astro";
+import { Mail, Phone } from "lucide-astro";
+import profilePic from "../assets/images/im-avatar.png";
+import Tracking from "@/components/Tracking.astro";
 interface Props {
   title: string;
 }
@@ -13,47 +16,113 @@ const { title } = Astro.props;
 <html lang="en" class="dark bg-background">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="title" title={title} />
+    <meta
+      name="description"
+      content={`Enthusiastic Software Developer, passionate about User interfaces and
+    User experiences with deep interest in programming and building software
+    products that solves problems 🤓`}
+    />
+    <meta property="og:title" content={title} />
+    <meta property="og:url" content="https://www.vijayakrishna.dev" />
+    <meta
+      property="og:description"
+      content={`Enthusiastic Software Developer, passionate about User interfaces and User experiences with deep interest in programming and building software products that solves problems 🤓`}
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vijayakrishna Venkatesan" />
+    <meta
+      property="og:image"
+      content={`https://www.vijayakrishna.dev/${profilePic}`}
+    />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:site" content="https://www.vijayakrishna.dev" />
+    <meta
+      property="twitter:description"
+      content={`Enthusiastic Software Developer, passionate about User interfaces and
+    User experiences with deep interest in programming and building software
+    products that solves problems 🤓`}
+    />
+    <meta
+      property="twitter:image"
+      content={`https://www.vijayakrishna.dev/${profilePic}`}
+    />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
     />
-
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <Tracking />
   </head>
-  <body class="container my-12">
+  <body class="container mx-auto">
     <header
-      class="flex py-4 border-b sticky bg-background z-10 top-0 bottom-0 items-center gap-4 w-full"
+      class="flex md:flex-row flex-col md:items-center py-4 border-b sticky bg-background z-10 top-0 bottom-0 gap-4 w-full animate-fade-right animate-duration-700"
     >
-      <DisplayPicture client:load />
-      <div class="flex flex-col gap-2">
-        <p class="text-xl text-foreground/90">
-          Hey there 👋. I'm Vijay. <br /> Software Engineer from Hamburg
-        </p>
-        <div class="flex items-center gap-4">
-          <a
-            href="https://www.linkedin.com/in/vijayakrishna-venkatesan-7a557291/"
-            target="_blank"
-          >
-            <Linkedin color="#6b88e1" size={"18px"} strokeWidth={"1px"} />
-          </a>
-          <a href="https://github.com/Viijay-Kr" target="_blank">
-            <Github size={"18px"} strokeWidth={"1px"} />
-          </a>
-          <a href="https://x.com/reactporiyalar" target="_blank">
-            <X size={"18px"} strokeWidth={"1px"} />
-          </a>
+      <div class="flex items-center gap-4">
+        <DisplayPicture client:load />
+        <div class="flex flex-col gap-2 items-start">
+          <p class="text-lg md:text-xl text-foreground/90">
+            Hey there 👋. I'm Vijay. <br /> Software Engineer from Hamburg
+          </p>
+          <div class="flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/in/vijayakrishna-venkatesan-7a557291/"
+              title="Linked In"
+              target="_blank"
+              class="header-links"
+            >
+              <Linkedin color="#6b88e1" size={"18px"} strokeWidth={"1px"} />
+            </a>
+            <a
+              href="https://github.com/Viijay-Kr"
+              target="_blank"
+              title="Github"
+              class="header-links"
+            >
+              <Github size={"18px"} strokeWidth={"1px"} />
+            </a>
+            <a
+              href="https://x.com/reactporiyalar"
+              target="_blank"
+              title="X"
+              class="header-links"
+            >
+              <X size={"18px"} strokeWidth={"1px"} />
+            </a>
+          </div>
         </div>
       </div>
-      <Navigation />
+      <div class="md:ml-auto flex flex-col">
+        <div class="flex items-center gap-2">
+          <Mail size="18" />
+          <a
+            href="mailto:vijayakrishna.venkatesan@gmail.com"
+            class="text-light hover:underline header-links"
+            title="Mail"
+          >
+            vijayakrishna.venkatesan@gmail.com
+          </a>
+        </div>
+        <div class="flex items-center gap-2">
+          <Phone size="18" />
+          <a
+            href="tel:+4917661332826"
+            class="text-light hover:underline header-links"
+            title="Phone">+49 176 61332826</a
+          >
+        </div>
+        <Navigation />
+      </div>
     </header>
-  </body>
-  <slot />
+  </body><slot />
 </html>
 
 <style is:global>
@@ -74,3 +143,21 @@ const { title } = Astro.props;
       monospace;
   }
 </style>
+
+<script>
+  const links = document.querySelectorAll(".header-links");
+  links.forEach((el) => {
+    const title = el.getAttribute("title") ?? "";
+    const href = el.getAttribute("href") ?? "";
+    el.addEventListener("click", () => {
+      window.Insights.track({
+        type: "click",
+        meta: {
+          title,
+          value: href,
+          source: "header",
+        },
+      });
+    });
+  });
+</script>

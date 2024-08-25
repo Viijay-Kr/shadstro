@@ -2,6 +2,27 @@
 module.exports = {
   darkMode: ["class"],
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  safelist: [
+    "animate-delay-[100ms]",
+    "animate-delay-[200ms]",
+    "animate-delay-[300ms]",
+    "animate-delay-[400ms]",
+    "animate-delay-[500ms]",
+    "animate-delay-[600ms]",
+    "animate-delay-[700ms]",
+    "animate-delay-[800ms]",
+    "animate-delay-[900ms]",
+    "animate-delay-[1000ms]",
+    "animate-delay-[1100ms]",
+    "animate-delay-[1200ms]",
+    "animate-delay-[1300ms]",
+    "animate-delay-[1400ms]",
+    "animate-delay-[1500ms]",
+    "animate-delay-[1600ms]",
+    {
+      pattern: /animate-fade-(up|down|right|left)/,
+    },
+  ],
   prefix: "",
   theme: {
     container: {
@@ -81,5 +102,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animated")],
 };

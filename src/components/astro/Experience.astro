@@ -1,0 +1,102 @@
+---
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "../ui/button";
+import { Download } from "lucide-react";
+import classNames from "classnames";
+
+const jobs = [
+  {
+    title: "Senior Fullstack Engineer",
+    company: "Quantilope GmBh",
+    timeline: "Nov 21 - Present",
+    location: "Hamburg, Germany",
+  },
+  {
+    title: "Senior Frontend Engineer",
+    company: "About You GmBh",
+    timeline: "Nov 18 - Oct 21",
+    location: "Hamburg, Germany",
+  },
+  {
+    title: "Frontend Engineer",
+    company: "Razorthink Inc",
+    timeline: "Aug 16 - Sept 18",
+    location: "Bangalore, India",
+  },
+  {
+    title: "Web Developer",
+    company: "Cartoon Mango Studios",
+    timeline: "Apr 15 - July 16",
+    location: "Bangalore, India",
+  },
+];
+---
+
+<Card className="animate-fade-down animate-duration-700">
+  <CardHeader className="pb-0">
+    <CardTitle className="flex text-accent-foreground/80 items-center">
+      Experience
+    </CardTitle>
+  </CardHeader>
+  <CardContent className="py-2 grid md:grid-cols-3">
+    <ul class="">
+      {
+        jobs.map((job, index) => (
+          <li
+            class={classNames(
+              "my-4 animate-fade-right animate-duration-700 ",
+              `animate-delay-[${(index + 1) * 100}ms]`
+            )}
+          >
+            <div>
+              <p class="flex items-center">{job.title}</p>
+              <p class="text-primary/75">{job.company}</p>
+              <p class="text-muted-foreground/75 text-sm">{job.timeline}</p>
+              <span class="text-sm md:justify-self-end text-muted-foreground/75">
+                {job.location}
+              </span>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="flex-col flex relative gap-2 md:col-span-2">
+      <iframe
+        src="https://1drv.ms/b/c/5e725c9cb726aadb/IQOLbKtZetHTQJJWT3WQB5WqAbf_1RRFyY2Lb_BpOFknV5Y"
+        class="h-[85%] hidden md:block border-2 rounded-sm p-2"
+      >
+      </iframe>
+      <a
+        href="https://1drv.ms/b/c/5e725c9cb726aadb/IQOLbKtZetHTQJJWT3WQB5WqAbf_1RRFyY2Lb_BpOFknV5Y"
+        target="_blank"
+        class=""
+      >
+        <Button
+          className="font-bold w-full flex items-center gap-1 text-xs"
+          title="Download CV"
+          size={"sm"}
+          onClick={() => {
+            window.Insights.track({
+              type: "click",
+              meta: {
+                title: "CV",
+                source: "Experience",
+                value: "",
+              },
+            });
+          }}
+        >
+          <Download size={"16px"} className="" />
+          CV
+        </Button>
+      </a>
+    </div>
+  </CardContent>
+  <CardFooter className="p-2 justify-end" />
+</Card>

@@ -1,0 +1,92 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "../ui/button";
+import classNames from "classnames";
+
+const blogs = [
+  {
+    title: "Typescript Language Service Plugins",
+    link: "https://blogs.vijayakrishna.dev/blog/typescript-plugin-par1/",
+    date: "Mar 5, 2022",
+    description:
+      "Understanding the potential of typescript language service plugins in VS code",
+  },
+  {
+    title: "Do yourself a favour by including 'drizzle-orm' in your stack",
+    link: "https://blogs.vijayakrishna.dev/blog/drizzle-orm/",
+    date: "Dec 29, 2023",
+    description: "Many greatful benefits of using drizzle ORM for your backend",
+  },
+  {
+    title: "Tired of entering your password to perform 'sudo' operations ?",
+    link: "https://blogs.vijayakrishna.dev/blog/sudo-touch-id/",
+    date: "Apr 19, 2024",
+    description:
+      "A simple but efficient technique to use touch id for sudo authorizations in Mac OS",
+  },
+];
+---
+
+<section>
+  <h2 class="mt-8 mb-2 flex text-accent-foreground/80 text-2xl font-bold">
+    Posts
+  </h2>
+  <div class="flex flex-col gap-2">
+    {
+      blogs.map((blog) => (
+        <a
+          class={classNames(
+            "animate-fade-up animate-duration-700 cursor-pointer"
+          )}
+          href={blog.link}
+          target="_blank"
+        >
+          <Card
+            onClick={() => {
+              window.Insights.track({
+                type: "click",
+                meta: {
+                  title: blog.title,
+                  source: "posts",
+                  value: blog.link,
+                },
+              });
+            }}
+          >
+            <div>
+              <CardHeader className="pb-0">
+                <CardTitle className="text-lg text-primary flex items-center gap-2">
+                  {blog.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="py-2 flex md:flex-row flex-col items-center flex-1">
+                <p class="font-medium text-muted-foreground flex items-center">
+                  {blog.description}
+                </p>
+                <p class="text-muted-foreground/75 text-sm ml-auto">
+                  {blog.date}
+                </p>
+              </CardContent>
+            </div>
+          </Card>
+        </a>
+      ))
+    }
+  </div>
+  <a href="https://blogs.vijayakrishna.dev" target="_blank">
+    <Button
+      onClick={() => {
+        window.Insights.track({
+          type: "click",
+          meta: {
+            title: "View more",
+            source: "posts",
+            value: "https://blogs.vijayakrishna.dev",
+          },
+        });
+      }}
+      variant={"link"}
+      className="flex ml-auto my-2 text-muted-foreground">View More</Button
+    >
+  </a>
+</section>

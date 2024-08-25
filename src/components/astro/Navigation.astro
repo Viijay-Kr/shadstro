@@ -1,0 +1,104 @@
+---
+import { Monitor, Moon, Sun } from "lucide-astro";
+---
+
+<nav class="mt-2 flex">
+  <div class="flex rounded-full p-1.5 px-2 mr-2 w-auto gap-2 border">
+    <Moon
+      size="18px"
+      class="stroke-muted-foreground ml-auto cursor-pointer hover:stroke-primary hover:fill-primary"
+      id="theme-dark"
+    />
+    <Sun
+      size="18px"
+      class="stroke-muted-foreground cursor-pointer hover:stroke-primary hover:fill-primary"
+      id="theme-light"
+    />
+    <Monitor
+      size="18px"
+      class="stroke-muted-foreground cursor-pointer hover:stroke-primary hover:fill-primary"
+      id="theme-system"
+    />
+  </div>
+</nav>
+
+<script>
+  const darkTheme = document.getElementById("theme-dark");
+  const lightTheme = document.getElementById("theme-light");
+  const systemTheme = document.getElementById("theme-system");
+  const isSystemColorSchemeDark = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
+  const storageTheme = localStorage.getItem("theme");
+
+  if (storageTheme === "dark" || !storageTheme) {
+    setDarkTheme();
+  } else if (storageTheme === "light") {
+    setLightTheme();
+  } else if (storageTheme === "system") {
+    setSystemTheme();
+  }
+
+  darkTheme?.addEventListener("click", () => {
+    setDarkTheme();
+    window.Insights.track({
+      type: "click",
+      meta: {
+        title: "Theme",
+        source: "header",
+        value: "dark",
+      },
+    });
+  });
+
+  lightTheme?.addEventListener("click", () => {
+    setLightTheme();
+    window.Insights.track({
+      type: "click",
+      meta: {
+        title: "Theme",
+        source: "header",
+        value: "light",
+      },
+    });
+  });
+
+  systemTheme?.addEventListener("click", () => {
+    setSystemTheme();
+    window.Insights.track({
+      type: "click",
+      meta: {
+        title: "Theme",
+        source: "header",
+        value: "system",
+      },
+    });
+  });
+
+  function setLightTheme() {
+    document.documentElement.classList.remove("dark");
+    lightTheme?.classList.add("stroke-foreground", "fill-foreground");
+    darkTheme?.classList.remove("stroke-foreground", "fill-foreground");
+    systemTheme?.classList.remove("stroke-foreground", "fill-foreground");
+    localStorage.setItem("theme", "light");
+  }
+  function setDarkTheme() {
+    document.documentElement.classList.add("dark");
+    darkTheme?.classList.add("stroke-foreground", "fill-foreground");
+    lightTheme?.classList.remove("stroke-foreground", "fill-foreground");
+    systemTheme?.classList.remove("stroke-foreground", "fill-foreground");
+    localStorage.setItem("theme", "dark");
+  }
+
+  function setSystemTheme() {
+    if (isSystemColorSchemeDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    systemTheme?.classList.add("stroke-foreground", "fill-foreground");
+    darkTheme?.classList.remove("stroke-foreground", "fill-foreground");
+    lightTheme?.classList.remove("stroke-foreground", "fill-foreground");
+    localStorage.setItem("theme", "system");
+  }
+</script>

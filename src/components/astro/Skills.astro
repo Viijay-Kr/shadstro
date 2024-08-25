@@ -1,0 +1,121 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { type Props as StackProps } from "./StackIcon.astro";
+import StackIcon from "./StackIcon.astro";
+
+const tools: Array<{
+  label: string;
+  level: number;
+  stack?: StackProps["stack"];
+}> = [
+  {
+    label: "Typescript",
+    level: 95,
+    stack: "ts",
+  },
+  {
+    label: "Node JS",
+    level: 95,
+    stack: "nodejs",
+  },
+  {
+    label: "CSS",
+    level: 75,
+    stack: "css",
+  },
+  {
+    label: "Sass",
+    level: 75,
+    stack: "sass",
+  },
+  {
+    label: "TailwindCSS",
+    level: 75,
+    stack: "tailwind",
+  },
+  {
+    label: "React",
+    level: 90,
+    stack: "react",
+  },
+  {
+    label: "Rust",
+    level: 40,
+    stack: "rust",
+  },
+  {
+    label: "MongoDB",
+    level: 70,
+    stack: "mongodb",
+  },
+  {
+    label: "SQL",
+    level: 50,
+    stack: "sql",
+  },
+  {
+    label: "Prisma",
+    level: 50,
+    stack: "prisma",
+  },
+  {
+    label: "Drizzle ORM",
+    level: 50,
+    stack: "drizzle",
+  },
+  {
+    label: "Next JS",
+    level: 60,
+    stack: "nextjs",
+  },
+  {
+    label: "Astro",
+    level: 60,
+    stack: "astro",
+  },
+  {
+    label: "Vercel",
+    level: 60,
+    stack: "vercel",
+  },
+  {
+    label: "Git",
+    level: 60,
+    stack: "git",
+  },
+  {
+    label: "Markdown",
+    level: 50,
+    stack: "mdx",
+  },
+];
+---
+
+<Card className="self-start animate-fade-up animate-once animate-duration-700">
+  <CardHeader className="pb-0">
+    <CardTitle className="flex text-accent-foreground/80 items-center">
+      Tools of Choice
+    </CardTitle>
+  </CardHeader>
+  <CardContent className="py-2">
+    <ul>
+      {
+        tools
+          .sort((a, b) => b.level - a.level)
+          .map((tool, index) => (
+            <li
+              class={`my-3 grid items-center text-sm grid-cols-2 gap-1 animate-fade-right  animate-duration-700 
+                animate-delay-[${(index + 1) * 100}ms]`}
+            >
+              <p class="font-bold flex items-center gap-2">
+                {tool.stack && <StackIcon stack={tool.stack} />}
+                {tool.label}
+              </p>
+              <Progress value={tool.level} />
+            </li>
+          ))
+      }
+    </ul>
+  </CardContent>
+</Card>

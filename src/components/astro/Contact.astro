@@ -1,0 +1,31 @@
+---
+import { Mail, Phone } from "lucide-astro";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+---
+
+<Card
+  className="col-span-1 grow-0 self-start animate-fade-down animate-duration-700"
+>
+  <CardHeader className="pb-0">
+    <CardTitle className="text-accent-foreground/80">Contact</CardTitle>
+  </CardHeader>
+  <CardContent className="py-2">
+    <ul class="my-4">
+      <li class="flex my-2 items-center gap-2">
+        <Mail size="16px" class="stroke-muted-foreground" />
+        <a
+          href="mailto:vijayakrishna.venkatesan@gmail.com"
+          class="text-light text-sm hover:underline"
+        >
+          vijayakrishna.venkatesan@gmail.com</a
+        >
+      </li>
+      <li class="flex items-center gap-2 my-2">
+        <Phone size="16px" class="stroke-muted-foreground" />
+        <a href="tel:+4917661332826" class="text-light text-sm hover:underline"
+          >+49 176 61332826</a
+        >
+      </li>
+    </ul>
+  </CardContent>
+</Card>

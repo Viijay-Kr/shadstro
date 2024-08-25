@@ -1,27 +1,89 @@
 ---
-import { Nextdotjs, Rust, Typescript } from "simple-icons-astro";
+import classNames from "classnames";
+import {
+  Nextdotjs,
+  Rust,
+  Typescript,
+  Mongodb,
+  React,
+  Astro as AstroIcon,
+  Tailwindcss,
+  Mdx,
+  Chakraui,
+  Prisma,
+  Drizzle,
+  Nodedotjs,
+  Mysql,
+  Vercel,
+  Git,
+  Cssmodules,
+  Sass,
+} from "simple-icons-astro";
 
 export interface Props {
-  stack: "ts" | "rust" | "nextjs";
+  stack:
+    | "ts"
+    | "rust"
+    | "nextjs"
+    | "mongodb"
+    | "react"
+    | "astro"
+    | "mdx"
+    | "tailwind"
+    | "chakraui"
+    | "nodejs"
+    | "prisma"
+    | "drizzle"
+    | "sql"
+    | "vercel"
+    | "git"
+    | "github-actions"
+    | "css"
+    | "sass";
+  class?: string;
 }
 
 const props = Astro.props;
 ---
 
-<>
-  {
-    props.stack === "ts" && (
-      <Typescript size="18px" class="fill-typescript-icon" />
-    )
-  }
-  {
-    props.stack === "rust" && (
-      <Rust size="18px" class="dark:fill-white fill-black" />
-    )
-  }
-  {
-    props.stack === "nextjs" && (
-      <Nextdotjs size="18px" class="dark:fill-white fill-black" />
-    )
-  }
-</>
+{
+  props.stack === "ts" && (
+    <Typescript class={classNames("fill-typescript-icon", props.class)} />
+  )
+}
+{
+  props.stack === "rust" && (
+    <Rust class={classNames("dark:fill-white fill-black", props.class)} />
+  )
+}
+{props.stack === "mongodb" && <Mongodb class={classNames("fill-[#47A248]")} />}
+{props.stack === "react" && <React class={classNames("fill-[#61DAFB]")} />}
+{props.stack === "astro" && <AstroIcon class={classNames("fill-[#BC52EE]")} />}
+{
+  props.stack === "tailwind" && (
+    <Tailwindcss class={classNames("fill-[#06B6D4]")} />
+  )
+}
+{
+  props.stack === "mdx" && (
+    <Mdx class={classNames("fill-[#1B1F24] dark:fill-white")} />
+  )
+}
+{
+  props.stack === "chakraui" && (
+    <Chakraui class={classNames("fill-[#319795]")} />
+  )
+}
+{
+  props.stack === "nextjs" && (
+    <Nextdotjs class={classNames("dark:fill-white fill-black", props.class)} />
+  )
+}
+{props.stack === "prisma" && <Prisma class="fill-[#2D3748] dark:fill-white" />}
+{props.stack === "drizzle" && <Drizzle class="fill-[#C5F74F]" />}
+{props.stack === "sql" && <Mysql class="fill-[#4479A1] dark:fill-white" />}
+{props.stack === "nodejs" && <Nodedotjs class="fill-[#5FA04E]" />}
+{props.stack === "vercel" && <Vercel class="fill-[#000000] dark:fill-white" />}
+{props.stack === "git" && <Git class="fill-[#F05032]" />}
+{props.stack === "css" && <Cssmodules class="fill-[#000000] dark:fill-white" />}
+{props.stack === "sass" && <Sass class="fill-[#CC6699] " />}
