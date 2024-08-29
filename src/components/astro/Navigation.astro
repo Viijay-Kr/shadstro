@@ -31,11 +31,11 @@ import { Monitor, Moon, Sun } from "lucide-astro";
   ).matches;
   const storageTheme = localStorage.getItem("theme");
 
-  if (storageTheme === "dark" || !storageTheme) {
+  if (storageTheme === "dark") {
     setDarkTheme();
   } else if (storageTheme === "light") {
     setLightTheme();
-  } else if (storageTheme === "system") {
+  } else if (storageTheme === "system" || !storageTheme) {
     setSystemTheme();
   }
 
