@@ -18,6 +18,7 @@ import {
   Git,
   Cssmodules,
   Sass,
+  Bun,
 } from "simple-icons-astro";
 
 export interface Props {
@@ -39,7 +40,8 @@ export interface Props {
     | "git"
     | "github-actions"
     | "css"
-    | "sass";
+    | "sass"
+    | "bun";
   class?: string;
 }
 
@@ -86,4 +88,9 @@ const props = Astro.props;
 {props.stack === "vercel" && <Vercel class="fill-[#000000] dark:fill-white" />}
 {props.stack === "git" && <Git class="fill-[#F05032]" />}
 {props.stack === "css" && <Cssmodules class="fill-[#000000] dark:fill-white" />}
-{props.stack === "sass" && <Sass class="fill-[#CC6699] " />}
+{props.stack === "sass" && <Sass class="fill-[#CC6699]" />}
+{
+  props.stack === "bun" && (
+    <Bun class="stroke-[#000000] fill-none dark:fill-white" />
+  )
+}
