@@ -9,7 +9,7 @@ import {
 import { Button } from "../ui/button";
 import { Download } from "lucide-react";
 import classNames from "classnames";
-
+import cv from "../../assets/Vijayakrishna.pdf";
 const jobs = [
   {
     title: "Senior Fullstack Engineer",
@@ -67,17 +67,9 @@ const jobs = [
       }
     </ul>
     <div class="flex-col flex relative gap-2 md:col-span-2">
-      <iframe
-        src="https://1drv.ms/b/c/5e725c9cb726aadb/IQOLbKtZetHTQJJWT3WQB5WqAbf_1RRFyY2Lb_BpOFknV5Y"
-        class="h-[85%] hidden md:block border-2 rounded-sm p-2"
-      >
+      <iframe src={cv} class="h-[100%] hidden md:block border-2 rounded-sm p-2">
       </iframe>
-      <a
-        href="https://1drv.ms/b/c/5e725c9cb726aadb/IQOLbKtZetHTQJJWT3WQB5WqAbf_1RRFyY2Lb_BpOFknV5Y"
-        target="_blank"
-        class=""
-        id="cv"
-      >
+      <a href={cv} download="Vijayakrishna.pdf" class="md:hidden" id="cv">
         <Button
           className="font-bold w-full flex items-center gap-1 text-xs"
           title="Download CV"
