@@ -1,8 +1,9 @@
 ---
-import { Monitor, Moon, Sun } from "lucide-astro";
+import { Calendar, Monitor, Moon, Sun } from "lucide-astro";
+import { Button } from "../ui/button";
 ---
 
-<nav class="mt-2 flex">
+<nav class="mt-2 flex items-center">
   <div class="flex rounded-full p-1.5 px-2 mr-2 w-auto gap-2 border">
     <Moon
       size="18px"
@@ -20,6 +21,16 @@ import { Monitor, Moon, Sun } from "lucide-astro";
       id="theme-system"
     />
   </div>
+  <a
+    class="ml-auto flex items-center gap-2"
+    href="https://cal.com/vijaykrish"
+    target="_blank"
+  >
+    <Button className="flex gap-2 items-center">
+      <Calendar size="16px" />
+      Let's Talk!
+    </Button>
+  </a>
 </nav>
 
 <script>
@@ -27,7 +38,7 @@ import { Monitor, Moon, Sun } from "lucide-astro";
   const lightTheme = document.getElementById("theme-light");
   const systemTheme = document.getElementById("theme-system");
   const isSystemColorSchemeDark = window.matchMedia(
-    "(prefers-color-scheme: dark)"
+    "(prefers-color-scheme: dark)",
   ).matches;
   const storageTheme = localStorage.getItem("theme");
 
